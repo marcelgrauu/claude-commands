@@ -1,16 +1,16 @@
 ---
 name: creator-list
-description: /creator-list video effect for Claude Code. A sheet of creator profiles scrolls and one gets picked. Use it when the user types /creator-list or asks for this effect on their video.
+description: /creator-list video effect for Claude Code. An iOS sheet of creators slides up and picks you. Use it when the user types /creator-list or asks for this effect on their video.
 ---
 
 # /creator-list
 
-A sheet of creator profiles scrolls and one gets picked.
+An iOS sheet of creators slides up and picks you.
 
-A dark sheet of creator profile rows (avatar, verified name, posts, followers, following) slides up and scrolls with an ease, then my row gets picked with a yellow ring and a soft yellow highlight.
+Under my face, a dark glass iOS bottom sheet slides up: Creators to watch, rows with a round profile photo, the name with a blue verified badge, followers and a one line bio, and a blue Follow button. It scrolls with a flick and settles with my row in the middle; my row lifts, gets a yellow ring around the photo, the others dim and my Follow flips to Following. Never cover the face.
 
 **What you need:** A vertical 9:16 clip shot on a locked camera (tripod).
-**What works best in the clip:** talking to camera.
+**What works best in the clip:** talking to camera; Claude needs a profile photo per row in public/ (yours as pfp_me.jpg).
 
 ## Steps (Claude does them)
 
@@ -20,7 +20,7 @@ A dark sheet of creator profile rows (avatar, verified name, posts, followers, f
 4. The component is `CreatorList` in `commands-fx/src/fx/Grid8.tsx`. Register it in `src/Root.tsx`:
    `<CreatorList clip={c("input", 0).clip} />`
    (`c("input", 0)` is the Root.tsx helper pointing to `clips/input.mp4` and its cutout `clips/input-alpha.mov`.)
-5. Pull one frame of the clip with ffmpeg and look at it: fit the effect to the face and hands of THIS clip. Things you can change: the creator rows (CREATORS).
+5. Pull one frame of the clip with ffmpeg and look at it: fit the effect to the face and hands of THIS clip. Things you can change: the creator rows (CREATORS) and which one is you (ME).
 6. Render: `npx remotion render fx-creator-list out/creator-list.mp4` and check a sheet of 8 frames, transitions included. If anything covers the eyes, gets cut at the edge or fights the gesture, fix it and render again.
 7. Hand over the mp4 and say in one line what you adjusted.
 
@@ -28,4 +28,4 @@ A dark sheet of creator profile rows (avatar, verified name, posts, followers, f
 
 Paste this into Claude Code with your clip in the folder:
 
-> A dark sheet of creator profile rows (avatar, verified name, posts, followers, following) slides up and scrolls with an ease, then my row gets picked with a yellow ring and a soft yellow highlight. Build it in Remotion at 1080x1920 and 30 fps with professional motion (smooth curves, nothing static, the camera always slightly alive), and hold the last frame. Check the frames before calling it done.
+> Under my face, a dark glass iOS bottom sheet slides up: Creators to watch, rows with a round profile photo, the name with a blue verified badge, followers and a one line bio, and a blue Follow button. It scrolls with a flick and settles with my row in the middle; my row lifts, gets a yellow ring around the photo, the others dim and my Follow flips to Following. Never cover the face. Build it in Remotion at 1080x1920 and 30 fps with professional motion (smooth curves, nothing static, the camera always slightly alive), and hold the last frame. Check the frames before calling it done.
