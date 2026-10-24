@@ -187,10 +187,10 @@ const io = new IntersectionObserver(es => es.forEach(e => {
 document.querySelectorAll("#featured video").forEach(v => io.observe(v));
 
 // the full list
-// filters: Best (the reel, in its order) by default, All, then groups
-const FILTERS = [["Best", FEATURED], ["All", FX.map(f => f.cmd)]].concat(
+// filters: From the reel (in the reel order) by default, All, then groups
+const FILTERS = [["From the reel", FEATURED], ["All", FX.map(f => f.cmd)]].concat(
   ["Text", "Interfaces", "Numbers", "Social", "Behind you", "Looks"].map(g => [g, FX.filter(f => f.tags.includes(g)).map(f => f.cmd)]));
-let filter = "Best";
+let filter = "From the reel";
 const picked = new Set();
 let selecting = false;
 $("chips").innerHTML = FILTERS.map(([n, ids]) => `<button class="chip${n === filter ? " on" : ""}" data-f="${n}">${n}<small>${ids.length}</small></button>`).join("");
